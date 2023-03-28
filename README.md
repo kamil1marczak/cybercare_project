@@ -66,6 +66,17 @@ This application can be configured with environment variables.
 You can create `.env` file in the root directory and place all
 environment variables here.
 
+example env file:
+```
+CYBERCARE_PROJECT_RELOAD=True
+OUTPUT_FILE_NAME=output.json
+OUTPUT_FILE_DIR=file_storage
+INPUT_FILE_NAME=input.json
+INPUT_FILE_DIR=file_storage
+EVENT_ENDPOINT=EVENT
+PERIOD_SECONDS=3
+```
+
 to propagate env variables execute:
 ```bash
 set -a
