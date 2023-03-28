@@ -5,9 +5,9 @@ from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from cybercare_project.logging import configure_logging
-from cybercare_project.web.api.router import api_router
-from cybercare_project.web.lifetime import (
+from service_client.logging import configure_logging
+from service_client.web.api.router import api_router
+from service_client.web.lifetime import (
     register_shutdown_event,
     register_startup_event,
 )

@@ -4,7 +4,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import AsyncClient
 
-from cybercare_project.web.application import get_app
+from service_client.web.application import get_app
 
 
 @pytest.fixture(scope="session")

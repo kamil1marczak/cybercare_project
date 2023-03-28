@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from cybercare_project.web.api.echo.schema import Message
+from service_client.web.api.echo.schema import Message
 
 router = APIRouter()
 

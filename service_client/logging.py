@@ -4,7 +4,7 @@ from typing import Union
 
 from loguru import logger
 
-from cybercare_project.settings import settings
+from service_client.settings import settings
 
 
 class InterceptHandler(logging.Handler):

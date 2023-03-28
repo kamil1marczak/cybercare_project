@@ -1,12 +1,12 @@
 import uvicorn
 
-from cybercare_project.settings import settings
+from service_client.settings import settings
 
 
 def main() -> None:
     """Entrypoint of the application."""
     uvicorn.run(
-        "cybercare_project.web.application:get_app",
+        "service_client.web.application:get_app",
         workers=settings.workers_count,
         host=settings.host,
         port=settings.port,
