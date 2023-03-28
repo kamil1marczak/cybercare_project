@@ -1,24 +1,35 @@
 # cybercare_project
 
-This project was generated using fastapi_template.
+Project for Cybercare recruitment process.
+Task description can be found in Task.md file. Link -> [task description](./Task.md#task-description)
 
-## Poetry
+## Requirements:
+to run this project you need to have installed:
+- python 3.9 or higher
+- poetry (dependency manager) https://python-poetry.org/docs/#installation 
+- make (optional) https://www.gnu.org/software/make/
+- docker (optional) https://docs.docker.com/get-docker/
+- docker-compose (optional) https://docs.docker.com/compose/install/
 
-This project uses poetry. It's a modern dependency management
-tool.
+## Installation:
+- clone (or download and unpack) this repository
+- install dependencies with poetry (see below)
+- run make install or directly run `poetry install` in the root directory of the project
 
-To run the project use this set of commands:
+## How to run:
+First make sure the consumer server is running (see 1st below) and then pass the data 
+from the propagator service by running Event propagator (see 2nd below).
 
-```bash
-poetry install
-poetry run python -m cybercare_project
-```
+### Event consumer:
+- make consumer_service or directly run `poetry run python -m consumer_service` in the root 
+  directory of the project
 
-This will start the server on the configured host.
+This will start the server on the configured host. This command exposes the web 
+application on port 8000, mounts current directory and enables autoreload. You can find swagger documentation at `/api/docs`.
 
-You can find swagger documentation at `/api/docs`.
+### Event propagator:
+- make propagator_service or directly run `poetry run python -m propagator_service` in the root directory of the project
 
-You can read more about poetry here: https://python-poetry.org/
 
 ## Docker
 
@@ -44,22 +55,9 @@ docker-compose -f deploy/docker-compose.yml --project-directory . build
 ```
 
 ## Project structure
-
-```bash
-$ tree "cybercare_project"
-cybercare_project
-├── conftest.py  # Fixtures for all tests.
-├── __main__.py  # Startup script. Starts uvicorn.
-├── services  # Package for different external services such as rabbit or redis etc.
-├── settings.py  # Main configuration settings for project.
-├── static  # Static content.
-├── tests  # Tests for project.
-└── web  # Package contains web server. Handlers, startup config.
-    ├── api  # Package with all handlers.
-    │   └── router.py  # Main router.
-    ├── application.py  # FastAPI application configuration.
-    └── lifetime.py  # Contains actions to perform on startup and shutdown.
-```
+To generate: 
+- project structure run: `tree "service_consumer"`
+- project structure run: `tree "service_propagator"`
 
 ## Configuration
 
@@ -68,21 +66,12 @@ This application can be configured with environment variables.
 You can create `.env` file in the root directory and place all
 environment variables here.
 
-All environment variabels should start with "CYBERCARE_PROJECT_" prefix.
-
-For example if you see in your "cybercare_project/settings.py" a variable named like
-`random_parameter`, you should provide the "CYBERCARE_PROJECT_RANDOM_PARAMETER"
-variable to configure the value. This behaviour can be changed by overriding `env_prefix` property
-in `cybercare_project.settings.Settings.Config`.
-
-An exmaple of .env file:
+to propagate env variables execute:
 ```bash
-CYBERCARE_PROJECT_RELOAD="True"
-CYBERCARE_PROJECT_PORT="8000"
-CYBERCARE_PROJECT_ENVIRONMENT="dev"
+set -a
+. ./.env
+set +a
 ```
-
-You can read more about BaseSettings class here: https://pydantic-docs.helpmanual.io/usage/settings/
 
 ## Pre-commit
 

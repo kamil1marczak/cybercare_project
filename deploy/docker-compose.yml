@@ -12,13 +12,13 @@ services:
     environment:
       CYBERCARE_PROJECT_HOST: 0.0.0.0
 
-#  propagator:
-#    build:
-#      context: .
-#      dockerfile: ./deploy/propagator/Dockerfile
-#    image: fastapi_cybercare_propagator-latest
-#    restart: always
-#    env_file:
-#      - .env
-#    depends_on:
-#      - client
+  propagator:
+    build:
+      context: .
+      dockerfile: ./deploy/propagator/Dockerfile
+    image: fastapi_cybercare_propagator-latest
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - client

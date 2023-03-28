@@ -1,3 +1,6 @@
+install:
+	poetry install
+
 consumer_service:
 	poetry run python -m service_client
 

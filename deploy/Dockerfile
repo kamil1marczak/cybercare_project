@@ -17,4 +17,4 @@ RUN poetry install
 COPY . /app/src/
 RUN poetry install
 
-CMD ["/usr/local/bin/python", "-m", "cybercare_project"]
+CMD ["/usr/local/bin/python", "-m", "service_client"]
